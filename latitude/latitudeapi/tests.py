@@ -60,7 +60,7 @@ class UserFriendTestCase(APITestCase):
 
     def test_add_friend(self):
         url = reverse('friendship-list')
-        data = {'to_friend':1}
+        data = {'to_friend':"test1"}
 
         client = APIClient()
         client.login(username = "test2", password = "test")
@@ -71,10 +71,9 @@ class UserFriendTestCase(APITestCase):
         response = client.get(url,format = 'json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data),1)
-        self.assertEqual(response.data[0]['friend_name'],'test1')
-        self.assertEqual(response.data[0]['to_friend'],1)
+        self.assertEqual(response.data[0]['to_friend'],"test1")
 
-        data = {'to_friend':2}
+        data = {'to_friend':"test2"}
         response = client.post(url,data,format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 

@@ -36,12 +36,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class FriendSerializer(serializers.ModelSerializer):
-    #to_friend = UserSerializer()
-    friend_name = serializers.SerializerMethodField('get_friend_name')
+    to_friend = serializers.SlugRelatedField(many=False,slug_field='username')
     class Meta:
         model = FriendShip
-        fields = ('to_friend','friend_name')
-
-    def get_friend_name(self,obj):
-        if obj is not None:
-            return obj.to_friend.username
+        fields = ('to_friend',)
