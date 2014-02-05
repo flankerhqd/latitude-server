@@ -21,7 +21,7 @@ protocol(v0.1), refer to tests for more details:
     1.3 user add friend
         POST
         {
-            'to-friend':1(friend id)
+            'to-friend':"test"(friend name)
         }
         to /friend/
 
@@ -31,12 +31,10 @@ protocol(v0.1), refer to tests for more details:
         returns:
         [
             {
-                "to_friend": 1,
-                "friend_name": "dorm426"
+                "to_friend": "dorm426"
             },
             {
-                "to_friend": 5,
-                "friend_name": "test3"
+                "to_friend": "test3"
             }
         ]
 
